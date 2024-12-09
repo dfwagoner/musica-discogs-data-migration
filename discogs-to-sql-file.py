@@ -6,7 +6,7 @@ import json
 
 url = 'https://api.discogs.com/users/dwagoner/collection/folders/0/releases?sort=artist&page=0&per_page=50'
 #url = 'https://api.discogs.com/users/dwagoner/collection/folders/0/releases?sort=artist'
-headers = {"Authorization": "Discogs token=KKDmkHVNNaozUzjnoWdAbEAiLjIVFSgMkuQXNFVw"}
+headers = {"Authorization": "Discogs token=put_token_here"}
 
 response = requests.get(url, headers=headers)
 raw_json = response.json()
