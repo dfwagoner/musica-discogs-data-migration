@@ -57,7 +57,7 @@ for p in range(totalpages-1):
                     raw_json['releases'][i]['basic_information']['title'].replace('"', "'") + "\"" + ", " +  "\"" + 
                     raw_json['releases'][i]['basic_information']['artists'][0]['name'].replace('"', "'") + "\"" + ", " +  
                     str(raw_json['releases'][i]['basic_information']['year']) + ", " + str(raw_json['releases'][i]['rating']) + ", " + "\"" + 
-                    raw_json['releases'][i]['notes'][2]['value'] + "\"" + ")\n")              
+                    raw_json['releases'][i]['notes'][2]['value'] + "\"" + ", " + "\"\"" + ", " + "\"\"" + ")\n")              
             else:
                     f.write('INSERT INTO discogs_data VALUES (' +
                     str(raw_json['releases'][i]['id']) + ", " + 
@@ -66,7 +66,7 @@ for p in range(totalpages-1):
                     raw_json['releases'][i]['basic_information']['title'].replace('"', "'") + "\"" + ", " +  "\"" + 
                     raw_json['releases'][i]['basic_information']['artists'][0]['name'].replace('"', "'") + "\"" + ", " +  
                     str(raw_json['releases'][i]['basic_information']['year']) + ", " + str(raw_json['releases'][i]['rating']) + ", " + 
-                    "\"\"" + ")\n")     
+                    "\"\"" +  ", " + "\"\"" + ", " + "\"\"" + ")\n")     
 
     url = str('https://api.discogs.com/users/dwagoner/collection/folders/0/releases?sort=artist&page=' + str(totalpages) + '&per_page=50')
     headers = {"Authorization": "Discogs token=" + token}
@@ -87,7 +87,7 @@ for p in range(totalpages-1):
                     raw_json['releases'][i]['basic_information']['title'].replace('"', "'") + "\"" + ", " +  "\"" + 
                     raw_json['releases'][i]['basic_information']['artists'][0]['name'].replace('"', "'") + "\"" + ", " +  
                     str(raw_json['releases'][i]['basic_information']['year']) + ", " + str(raw_json['releases'][i]['rating']) + ", " + "\"" + 
-                    raw_json['releases'][i]['notes'][2]['value'] + "\"" + ")\n") 
+                    raw_json['releases'][i]['notes'][2]['value'] + "\"" + ", " + "\"\"" + ", " + "\"\"" + ")\n") 
                     #print((raw_json['releases'][i]['basic_information']['title']).replace('"', "'"))
    
             else:
@@ -98,7 +98,7 @@ for p in range(totalpages-1):
                     raw_json['releases'][i]['basic_information']['title'].replace('"', "'") + "\"" + ", " +  "\"" + 
                     raw_json['releases'][i]['basic_information']['artists'][0]['name'].replace('"', "'") + "\"" + ", " +  
                     str(raw_json['releases'][i]['basic_information']['year']) + ", " + str(raw_json['releases'][i]['rating']) + ", " + 
-                    "\"\"" + ")\n")     
+                    "\"\"" + ", " + "\"\"" + ", " + "\"\"" + ")\n")     
 
 
         #print(dict1)
