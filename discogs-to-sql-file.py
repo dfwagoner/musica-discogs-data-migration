@@ -12,7 +12,9 @@ response = requests.get(url, headers=headers)
 raw_json = response.json()
 
 totalpages = (raw_json['pagination']['pages'])
-	
+
+print ("Starting...")
+
 for p in range(1, totalpages + 1):
     url = str('https://api.discogs.com/users/dwagoner/collection/folders/0/releases?sort=artist&page=' + str(p) + '&per_page=50')
     response = requests.get(url, headers=headers)
@@ -20,9 +22,9 @@ for p in range(1, totalpages + 1):
     items_on_current_page = (len(raw_json['releases']))
     
     for i in range(items_on_current_page):
-        with open('discogs_data_sql.txt', mode='a', newline='\n') as f:
+        with open('discogs_data_sql.sql', mode='a', newline='\n') as f:
             if len(raw_json['releases'][i]['notes'])==3:
-                with open('discogs_data_sql.txt', mode='a', newline='\n') as f:
+                with open('discogs_data_sql.sql', mode='a', newline='\n') as f:
                     f.write('INSERT INTO discogs_data VALUES (' + 
                     str(raw_json['releases'][i]['id']) + ", " + 
                     str(raw_json['releases'][i]['instance_id']) + ", " + 
@@ -42,3 +44,5 @@ for p in range(1, totalpages + 1):
                     str(raw_json['releases'][i]['basic_information']['year']) + ", " + str(raw_json['releases'][i]['rating']) + ", " + 
                     "'', " + "NULL, " + "NULL" + ");\n")     
                     time.sleep(.005)
+
+print("Finished.")
